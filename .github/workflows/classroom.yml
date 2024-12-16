@@ -1,0 +1,360 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Basic - Exercise 1 Tests - add
+      id: basic-exercise-1-tests-add
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 1 Tests - add
+        setup-command: python classroom_helpers/extract_code.py
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseOne.test_add
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 1 Tests - subtract
+      id: basic-exercise-1-tests-subtract
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 1 Tests - subtract
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseOne.test_sub
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 1 Tests - multiply
+      id: basic-exercise-1-tests-multiply
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 1 Tests - multiply
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseOne.test_mult
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 1 Tests - divide
+      id: basic-exercise-1-tests-divide
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 1 Tests - divide
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseOne.test_div
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 2 Tests - Invalid Input
+      id: basic-exercise-2-tests-invalid-input
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 2 Tests - Invalid Input
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseTwo.test_invalid
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 2 Tests - Tentative Input
+      id: basic-exercise-2-tests-tentative-input
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 2 Tests - Tentative Input
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseTwo.test_tent
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 2 Tests - Accepted Input
+      id: basic-exercise-2-tests-accepted-input
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 2 Tests - Accepted Input
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseTwo.test_acc
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 2 Tests - Declined Input
+      id: basic-exercise-2-tests-declined-input
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 2 Tests - Declined Input
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseTwo.test_deny
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 3 Tests - Basic Name
+      id: basic-exercise-3-tests-basic-name
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 3 Tests - Basic Name
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseThree.test_basics
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 3 Tests - Name with UPPERCASE
+      id: basic-exercise-3-tests-name-with-uppercase
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 3 Tests - Name with UPPERCASE
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseThree.test_upps
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 3 Tests - Name Lengths
+      id: basic-exercise-3-tests-name-lengths
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 3 Tests - Name Lengths
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseThree.test_length
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 3 Tests - Same Names
+      id: basic-exercise-3-tests-same-names
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 3 Tests - Same Names
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseThree.test_special
+        timeout: 10
+        max-score: 10
+    - name: Basic - Exercise 3 Tests - Names with Special Characters
+      id: basic-exercise-3-tests-names-with-special-characters
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic - Exercise 3 Tests - Names with Special Characters
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_0_basic.Test_ExerciseThree.test_chars
+        timeout: 10
+        max-score: 10
+    - name: Medium - Exercise 1 Tests - Invalid Input
+      id: medium-exercise-1-tests-invalid-input
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Medium - Exercise 1 Tests - Invalid Input
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_1_medium.Test_ExerciseOne.test_invalid
+        timeout: 10
+        max-score: 10
+    - name: Medium - Exercise 1 Tests - Inputs with No Tax values
+      id: medium-exercise-1-tests-inputs-with-no-tax-values
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Medium - Exercise 1 Tests - Inputs with No Tax values
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_1_medium.Test_ExerciseOne.test_notax
+        timeout: 10
+        max-score: 10
+    - name: Medium - Exercise 1 Tests - Inputs with Different Tax Brackets
+      id: medium-exercise-1-tests-inputs-with-different-tax-brackets
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Medium - Exercise 1 Tests - Inputs with Different Tax Brackets
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_1_medium.Test_ExerciseOne.test_brackets
+        timeout: 10
+        max-score: 10
+    - name: Medium - Exercise 2 Tests - Invalid Number
+      id: medium-exercise-2-tests-invalid-number
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Medium - Exercise 2 Tests - Invalid Number
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_1_medium.Test_ExerciseTwo.test_invalid
+        timeout: 10
+        max-score: 10
+    - name: Medium - Exercise 2 Tests - Generic Numbers
+      id: medium-exercise-2-tests-generic-numbers
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Medium - Exercise 2 Tests - Generic Numbers
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_1_medium.Test_ExerciseTwo.test_generic
+        timeout: 10
+        max-score: 10
+    - name: Medium - Exercise 3 Tests - 10 Digit Numbers
+      id: medium-exercise-3-tests-10-digit-numbers
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Medium - Exercise 3 Tests - 10 Digit Numbers
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_1_medium.Test_ExerciseTwo.test_digits
+        timeout: 10
+        max-score: 10
+    - name: Medium - Exercise 3 Tests - Repeated Digits
+      id: medium-exercise-3-tests-repeated-digits
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Medium - Exercise 3 Tests - Repeated Digits
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_1_medium.Test_ExerciseTwo.test_repeat
+        timeout: 10
+        max-score: 10
+    - name: Medium - Exercise 2 Tests - Consecutive Numbers
+      id: medium-exercise-2-tests-consecutive-numbers
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Medium - Exercise 2 Tests - Consecutive Numbers
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_1_medium.Test_ExerciseTwo.test_streak
+        timeout: 10
+        max-score: 10
+    - name: Medium - Exercise 3 Tests - Simple Username
+      id: medium-exercise-3-tests-simple-username
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Medium - Exercise 3 Tests - Simple Username
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_1_medium.Test_ExerciseThree.test_simple
+        timeout: 10
+        max-score: 10
+    - name: Medium - Exercise 3 Tests - Duplicates
+      id: medium-exercise-3-tests-duplicates
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Medium - Exercise 3 Tests - Duplicates
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_1_medium.Test_ExerciseThree.test_dup
+        timeout: 10
+        max-score: 10
+    - name: Medium - Exercise 3 Tests - Inputs with Data Order Swapped
+      id: medium-exercise-3-tests-inputs-with-data-order-swapped
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Medium - Exercise 3 Tests - Inputs with Data Order Swapped
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_1_medium.Test_ExerciseThree.test_swaps
+        timeout: 10
+        max-score: 10
+    - name: Advanced - Exercise 1 Tests - Empty Name
+      id: advanced-exercise-1-tests-empty-name
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Advanced - Exercise 1 Tests - Empty Name
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_2_advanced.Test_ExerciseOne.test_empty
+        timeout: 10
+        max-score: 10
+    - name: Advanced - Exercise 1 Tests - Acceptable Names
+      id: advanced-exercise-1-tests-acceptable-names
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Advanced - Exercise 1 Tests - Acceptable Names
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_2_advanced.Test_ExerciseOne.test_basic
+        timeout: 10
+        max-score: 10
+    - name: Advanced - Exercise 1 Tests - Invalid Names
+      id: advanced-exercise-1-tests-invalid-names
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Advanced - Exercise 1 Tests - Invalid Names
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_2_advanced.Test_ExerciseOne.test_invalids
+        timeout: 10
+        max-score: 10
+    - name: Advanced - Exercise 1 Tests - Missing Capital Letters
+      id: advanced-exercise-1-tests-missing-capital-letters
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Advanced - Exercise 1 Tests - Missing Capital Letters
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_2_advanced.Test_ExerciseOne.test_capitals
+        timeout: 10
+        max-score: 10
+    - name: Advanced - Exercise 2 Tests - Invalid Password
+      id: advanced-exercise-2-tests-invalid-password
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Advanced - Exercise 2 Tests - Invalid Password
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_2_advanced.Test_ExerciseTwo.test_invalid
+        timeout: 10
+        max-score: 10
+    - name: Advanced - Exercise 2 Tests - Valid Password
+      id: advanced-exercise-2-tests-valid-password
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Advanced - Exercise 2 Tests - Valid Password
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_2_advanced.Test_ExerciseTwo.test_correct
+        timeout: 10
+        max-score: 10
+    - name: Advanced - Exercise 2 Tests - Password Too Long
+      id: advanced-exercise-2-tests-password-too-long
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Advanced - Exercise 2 Tests - Password Too Long
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_2_advanced.Test_ExerciseTwo.test_long
+        timeout: 10
+        max-score: 10
+    - name: Advanced - Exercise 2 Tests - Missing Special Chars
+      id: advanced-exercise-2-tests-missing-special-chars
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Advanced - Exercise 2 Tests - Missing Special Chars
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_2_advanced.Test_ExerciseTwo.test_missing
+        timeout: 10
+        max-score: 10
+    - name: Advanced - Exercise 2 Tests - Incorrect Key
+      id: advanced-exercise-2-tests-incorrect-key
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Advanced - Exercise 2 Tests - Incorrect Key
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_2_advanced.Test_ExerciseTwo.test_key
+        timeout: 10
+        max-score: 10
+    - name: Advanced - Exercise 2 Tests - Incorrect Value
+      id: advanced-exercise-2-tests-incorrect-value
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Advanced - Exercise 2 Tests - Incorrect Value
+        setup-command: ''
+        command: python -m unittest classroom_helpers.test_2_advanced.Test_ExerciseTwo.test_value
+        timeout: 10
+        max-score: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        BASIC-EXERCISE-1-TESTS-ADD_RESULTS: "${{steps.basic-exercise-1-tests-add.outputs.result}}"
+        BASIC-EXERCISE-1-TESTS-SUBTRACT_RESULTS: "${{steps.basic-exercise-1-tests-subtract.outputs.result}}"
+        BASIC-EXERCISE-1-TESTS-MULTIPLY_RESULTS: "${{steps.basic-exercise-1-tests-multiply.outputs.result}}"
+        BASIC-EXERCISE-1-TESTS-DIVIDE_RESULTS: "${{steps.basic-exercise-1-tests-divide.outputs.result}}"
+        BASIC-EXERCISE-2-TESTS-INVALID-INPUT_RESULTS: "${{steps.basic-exercise-2-tests-invalid-input.outputs.result}}"
+        BASIC-EXERCISE-2-TESTS-TENTATIVE-INPUT_RESULTS: "${{steps.basic-exercise-2-tests-tentative-input.outputs.result}}"
+        BASIC-EXERCISE-2-TESTS-ACCEPTED-INPUT_RESULTS: "${{steps.basic-exercise-2-tests-accepted-input.outputs.result}}"
+        BASIC-EXERCISE-2-TESTS-DECLINED-INPUT_RESULTS: "${{steps.basic-exercise-2-tests-declined-input.outputs.result}}"
+        BASIC-EXERCISE-3-TESTS-BASIC-NAME_RESULTS: "${{steps.basic-exercise-3-tests-basic-name.outputs.result}}"
+        BASIC-EXERCISE-3-TESTS-NAME-WITH-UPPERCASE_RESULTS: "${{steps.basic-exercise-3-tests-name-with-uppercase.outputs.result}}"
+        BASIC-EXERCISE-3-TESTS-NAME-LENGTHS_RESULTS: "${{steps.basic-exercise-3-tests-name-lengths.outputs.result}}"
+        BASIC-EXERCISE-3-TESTS-SAME-NAMES_RESULTS: "${{steps.basic-exercise-3-tests-same-names.outputs.result}}"
+        BASIC-EXERCISE-3-TESTS-NAMES-WITH-SPECIAL-CHARACTERS_RESULTS: "${{steps.basic-exercise-3-tests-names-with-special-characters.outputs.result}}"
+        MEDIUM-EXERCISE-1-TESTS-INVALID-INPUT_RESULTS: "${{steps.medium-exercise-1-tests-invalid-input.outputs.result}}"
+        MEDIUM-EXERCISE-1-TESTS-INPUTS-WITH-NO-TAX-VALUES_RESULTS: "${{steps.medium-exercise-1-tests-inputs-with-no-tax-values.outputs.result}}"
+        MEDIUM-EXERCISE-1-TESTS-INPUTS-WITH-DIFFERENT-TAX-BRACKETS_RESULTS: "${{steps.medium-exercise-1-tests-inputs-with-different-tax-brackets.outputs.result}}"
+        MEDIUM-EXERCISE-2-TESTS-INVALID-NUMBER_RESULTS: "${{steps.medium-exercise-2-tests-invalid-number.outputs.result}}"
+        MEDIUM-EXERCISE-2-TESTS-GENERIC-NUMBERS_RESULTS: "${{steps.medium-exercise-2-tests-generic-numbers.outputs.result}}"
+        MEDIUM-EXERCISE-3-TESTS-10-DIGIT-NUMBERS_RESULTS: "${{steps.medium-exercise-3-tests-10-digit-numbers.outputs.result}}"
+        MEDIUM-EXERCISE-3-TESTS-REPEATED-DIGITS_RESULTS: "${{steps.medium-exercise-3-tests-repeated-digits.outputs.result}}"
+        MEDIUM-EXERCISE-2-TESTS-CONSECUTIVE-NUMBERS_RESULTS: "${{steps.medium-exercise-2-tests-consecutive-numbers.outputs.result}}"
+        MEDIUM-EXERCISE-3-TESTS-SIMPLE-USERNAME_RESULTS: "${{steps.medium-exercise-3-tests-simple-username.outputs.result}}"
+        MEDIUM-EXERCISE-3-TESTS-DUPLICATES_RESULTS: "${{steps.medium-exercise-3-tests-duplicates.outputs.result}}"
+        MEDIUM-EXERCISE-3-TESTS-INPUTS-WITH-DATA-ORDER-SWAPPED_RESULTS: "${{steps.medium-exercise-3-tests-inputs-with-data-order-swapped.outputs.result}}"
+        ADVANCED-EXERCISE-1-TESTS-EMPTY-NAME_RESULTS: "${{steps.advanced-exercise-1-tests-empty-name.outputs.result}}"
+        ADVANCED-EXERCISE-1-TESTS-ACCEPTABLE-NAMES_RESULTS: "${{steps.advanced-exercise-1-tests-acceptable-names.outputs.result}}"
+        ADVANCED-EXERCISE-1-TESTS-INVALID-NAMES_RESULTS: "${{steps.advanced-exercise-1-tests-invalid-names.outputs.result}}"
+        ADVANCED-EXERCISE-1-TESTS-MISSING-CAPITAL-LETTERS_RESULTS: "${{steps.advanced-exercise-1-tests-missing-capital-letters.outputs.result}}"
+        ADVANCED-EXERCISE-2-TESTS-INVALID-PASSWORD_RESULTS: "${{steps.advanced-exercise-2-tests-invalid-password.outputs.result}}"
+        ADVANCED-EXERCISE-2-TESTS-VALID-PASSWORD_RESULTS: "${{steps.advanced-exercise-2-tests-valid-password.outputs.result}}"
+        ADVANCED-EXERCISE-2-TESTS-PASSWORD-TOO-LONG_RESULTS: "${{steps.advanced-exercise-2-tests-password-too-long.outputs.result}}"
+        ADVANCED-EXERCISE-2-TESTS-MISSING-SPECIAL-CHARS_RESULTS: "${{steps.advanced-exercise-2-tests-missing-special-chars.outputs.result}}"
+        ADVANCED-EXERCISE-2-TESTS-INCORRECT-KEY_RESULTS: "${{steps.advanced-exercise-2-tests-incorrect-key.outputs.result}}"
+        ADVANCED-EXERCISE-2-TESTS-INCORRECT-VALUE_RESULTS: "${{steps.advanced-exercise-2-tests-incorrect-value.outputs.result}}"
+      with:
+        runners: basic-exercise-1-tests-add,basic-exercise-1-tests-subtract,basic-exercise-1-tests-multiply,basic-exercise-1-tests-divide,basic-exercise-2-tests-invalid-input,basic-exercise-2-tests-tentative-input,basic-exercise-2-tests-accepted-input,basic-exercise-2-tests-declined-input,basic-exercise-3-tests-basic-name,basic-exercise-3-tests-name-with-uppercase,basic-exercise-3-tests-name-lengths,basic-exercise-3-tests-same-names,basic-exercise-3-tests-names-with-special-characters,medium-exercise-1-tests-invalid-input,medium-exercise-1-tests-inputs-with-no-tax-values,medium-exercise-1-tests-inputs-with-different-tax-brackets,medium-exercise-2-tests-invalid-number,medium-exercise-2-tests-generic-numbers,medium-exercise-3-tests-10-digit-numbers,medium-exercise-3-tests-repeated-digits,medium-exercise-2-tests-consecutive-numbers,medium-exercise-3-tests-simple-username,medium-exercise-3-tests-duplicates,medium-exercise-3-tests-inputs-with-data-order-swapped,advanced-exercise-1-tests-empty-name,advanced-exercise-1-tests-acceptable-names,advanced-exercise-1-tests-invalid-names,advanced-exercise-1-tests-missing-capital-letters,advanced-exercise-2-tests-invalid-password,advanced-exercise-2-tests-valid-password,advanced-exercise-2-tests-password-too-long,advanced-exercise-2-tests-missing-special-chars,advanced-exercise-2-tests-incorrect-key,advanced-exercise-2-tests-incorrect-value
